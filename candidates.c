@@ -3,18 +3,18 @@
 
 void hello(int a);
 
-void Scan_info(char* candidate,char* age);
+void Scan_info(char* candidate,char* age,int a);
 
-void Out_info(char* candidate,char* age);
+void Out_info(char* candidate,char* age,int a);
 
 
 int main(){
     int a=0;
         
-    char age[5]={0};
+    char age[6][5]={0};
     char member_info[6][256];
 
-    char *candidate01 = member_info[0];                  //¿©±â ´Ù½Ã ÇØ°áÇÏ±â
+    char *candidate01 = member_info[0];                  //ì—¬ê¸° ë‹¤ì‹œ í•´ê²°í•˜ê¸°
     char *candidate02 = member_info[1];
     char *candidate03 = member_info[2];
     char *candidate04 = member_info[3];
@@ -22,7 +22,7 @@ int main(){
     char *candidate06 = member_info[5];
     
     printf("####################################\n");
-    printf("\t¿Àµğ¼Ç ÈÄº¸ÀÚ µ¥ÀÌÅÍ ÀÔ·Â\n");
+    printf("\tì˜¤ë””ì…˜ í›„ë³´ì ë°ì´í„° ì…ë ¥\n");
     printf("####################################\n");
 
        
@@ -30,12 +30,12 @@ int main(){
 
  for (a = 0; a < 6; a++) {
         hello(a);
-        Scan_info(member_info[a], age);        // ÀÔ·Â °ª 6°³¸¦ ¹Ş±â
+        Scan_info(member_info[a], age[a],a);        // ì…ë ¥ ê°’ 6ê°œë¥¼ ë°›ê¸°
     }
 
 
  for (a = 0; a < 6; a++) {
-        Out_info(member_info[a], age);        //  °ª 6°³¸¦ Ãâ·Â
+        Out_info(member_info[a], age[a],a);        //  ê°’ 6ê°œë¥¼ ì¶œë ¥
     }
 
     return 0;
@@ -43,95 +43,93 @@ int main(){
 
 void hello(int a){   
     char number[6][10]={
-    "Ã¹",
-    "µÎ",
-    "¼¼",
-    "³×",
-    "´Ù¼¸",
-    "¿©¼¸"
+    "ì²«",
+    "ë‘",
+    "ì„¸",
+    "ë„¤",
+    "ë‹¤ì„¯",
+    "ì—¬ì„¯"
     };
     
-    printf("%s",number[a]);                            //N¹øÂ° ÈÄº¸ÀÚ Ãâ·Â
+    printf("%s",number[a]);                            //Në²ˆì§¸ í›„ë³´ì ì¶œë ¥
       
    
-    printf("¹øÂ° ÈÄº¸ÀÚÀÇ Á¤º¸¸¦ ÀÔ·ÂÇÕ´Ï´Ù.\n");           
+    printf("ë²ˆì§¸ í›„ë³´ìì˜ ì •ë³´ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤.\n");           
     printf("-----------------------------------\n");
    
 }
 
-void Scan_info(char* candidate,char* age){                  //ÈÄº¸ÀÚ µ¥ÀÌÅÍ ÀÔ·Â 
+void Scan_info(char* candidate,char* age,int a){                  //í›„ë³´ì ë°ì´í„° ì…ë ¥ 
 
     int p=0;
     int i=0;
     int count=0;
     char ch;
     const char* base_info[11] = {
-        "¼º¸í: ",
-        "»ıÀÏ(YYYY/MM/DD Çü½Ä): ",
-        "¼ºº°(¿©¼ºÀÌ¸é F ¶Ç´Â ³²¼ºÀÌ¸é M): ",
-        "¸ŞÀÏ ÁÖ¼Ò: ",
-        "±¹Àû: ",
-        "BMI: ",                                    //2Â÷¿ø ¹è¿­ »ç¿ë
-        "ÁÖ ½ºÅ³: ",
-        "º¸Á¶ ½ºÅ³: ",
-        "ÇÑ±¹¾î µî±Ş(TOPIK): ",
+        "ì„±ëª…: ",
+        "ìƒì¼(YYYY/MM/DD í˜•ì‹): ",
+        "ì„±ë³„(ì—¬ì„±ì´ë©´ F ë˜ëŠ” ë‚¨ì„±ì´ë©´ M): ",
+        "ë©”ì¼ ì£¼ì†Œ: ",
+        "êµ­ì : ",
+        "BMI: ",                                    //2ì°¨ì› ë°°ì—´ ì‚¬ìš©
+        "ì£¼ ìŠ¤í‚¬: ",
+        "ë³´ì¡° ìŠ¤í‚¬: ",
+        "í•œêµ­ì–´ ë“±ê¸‰(TOPIK): ",
         "MBTI: ",
-        "¼Ò°³: "
+        "ì†Œê°œ: "
     };
 
 while(count<11){
 
-    printf("%s",base_info[count]);                      //°¢ Áú¹® ÇÏ³ª¾¿ Ãâ·Â
+    printf("%s",base_info[count]);                      //ê° ì§ˆë¬¸ í•˜ë‚˜ì”© ì¶œë ¥
     
-    while((ch = getchar()) != '\n' && ch != EOF) {      // ÁÙ¹Ù²Ş ¶Ç´Â EOF¸¦ ¸¸³¯ ¶§±îÁö ÀÔ·Â       
+    while((ch = getchar()) != '\n' && ch != EOF) {      // ì¤„ë°”ê¿ˆ ë˜ëŠ” EOFë¥¼ ë§Œë‚  ë•Œê¹Œì§€ ì…ë ¥       
             candidate[i++] = ch;
             if(count==1&&p<4){
                 age[p++]=ch;                
-            }                                           // ÀÔ·Â¹ŞÀº ¹®ÀÚ ¸¦ ÀúÀå 
+            }                                           // ì…ë ¥ë°›ì€ ë¬¸ì ë¥¼ ì €ì¥ 
         }
-            candidate[i++] = '^';                       // °¢ Áú¹® ³¡¿¡ '^' Ãß°¡ÇÏ¿© Áú¹® º°·Î ±¸º°
+            candidate[i++] = '^';                       // ê° ì§ˆë¬¸ ëì— '^' ì¶”ê°€í•˜ì—¬ ì§ˆë¬¸ ë³„ë¡œ êµ¬ë³„
             count++;
     }
-    candidate[i-1]='\0';                                //°¢ ¹®Àå ³¡¿¡ \0 Ãß°¡
+    candidate[i-1]='\0';                                //ê° ë¬¸ì¥ ëì— \0 ì¶”ê°€
     age[p]='\0';
     printf("=================================\n");
 }
 
 
-void Out_info(char* candidate,char* age){
-    int nayi;
+void Out_info(char* candidate,char* age,int a){
+    int sansu=0;
+    int nayi[6];
     int slash=0;
     int i=0;
     int n=0;
     int count=0;
 
-    nayi = atoi(age);       
-    nayi = 2024-nayi;       // ¸¸ ³ªÀÌ °è»ê
+    sansu = atoi(age);       
+    nayi[a] = 2024-sansu;       // ë§Œ ë‚˜ì´ ê³„ì‚°
     
     printf("####################################\n");
-    printf("\t¿Àµğ¼Ç ÈÄº¸ÀÚ µ¥ÀÌÅÍ Á¶È¸ \n");
+    printf("\tì˜¤ë””ì…˜ í›„ë³´ì ë°ì´í„° ì¡°íšŒ \n");
     printf("####################################\n");
     printf("=============================================================================================\n");
-    printf(" ¼º   ¸í  | »ı     ÀÏ|¼ºº°|  ¸Ş         ÀÏ  |±¹  Àû|BMI|ÁÖ½ºÅ³|º¸Á¶ ½ºÅ³|TOPIK|MBTI|¼Ò°³\n");
+    printf(" ì„±   ëª…  | ìƒ     ì¼|ì„±ë³„|  ë©”         ì¼  |êµ­  ì |BMI|ì£¼ìŠ¤í‚¬|ë³´ì¡° ìŠ¤í‚¬|TOPIK|MBTI|ì†Œê°œ\n");
     
     
     while(count<11&&candidate[i] !='\0'){
         
         if(candidate[i]=='^'&&count==0)
-            printf("(%d)",nayi);                    // ÀÌ¸§ µÚ¿¡ (¸¸³ªÀÌ) Ãâ·Â
-
-
-
+            printf("(%d)",nayi[a]);                    // ì´ë¦„ ë’¤ì— (ë§Œë‚˜ì´) ì¶œë ¥
+        
         if(candidate[i]=='^'){
-            printf(" |");                         // ÈÄº¸ÀÚ Á¤º¸µéÀ» Ãâ·ÂÈÄ | << ±¸º°
+            printf(" |");                         // í›„ë³´ì ì •ë³´ë“¤ì„ ì¶œë ¥í›„ | << êµ¬ë³„
             count++;
         }
-        else if(candidate[i]=='F'&&count==2){       // ¼ºº° Ãâ·Â
-            printf("¿©");
-        
+        else if(candidate[i]=='F'&&count==2){       // ì„±ë³„ ì¶œë ¥
+            printf("ì—¬");        
         }
-        else if(candidate[i]=='M'&&count==2)        //¼ºº° Ãâ·Â2
-            printf("³²");
+        else if(candidate[i]=='M'&&count==2)        //ì„±ë³„ ì¶œë ¥2
+            printf("ë‚¨");
         else
             printf("%c",candidate[i]); 
 
