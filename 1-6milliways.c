@@ -55,12 +55,12 @@ void END(struct last_sheet milliways[],int i);
 int main(){  
 	struct info_sheet candidate_arr[6]=
     {
-        {111111,"¹ÚÁö¿¬",          "20060415" ,"¿©", "jiyeon@outlook.com",    "ÇÑ±¹",     18.5, "´í½º", "ÀÛ°î" ,  0, "ENFJ",1},
-        {222222,"Ethan Smith",     "20050822" ,"³²", "ethan@outlook.com",    "¹Ì±¹",     21.2, "º¸ÄÃ", "ÀÛ»ç" ,  2, "ISTP",1},
-        {333333,"Suphanan Wong",   "20040105" ,"¿©", "suphanan@outlook.com", "ÅÂ±¹" ,    19.0, "´í½º", "ÀÛ»ç" ,  4, "INFJ",0},
-        {444444,"Helena Silva",    "20070310" ,"¿©", "helena@outlook.com",   "ºê¶óÁú",   20.8, "º¸ÄÃ", "ÀÛ°î ¹× ÀÛ»ç" ,1, "ENFP",1},
-        {555555,"Karolina Nowak",  "20060908" ,"¿©", "karolina@outlook.com", "Æú¶õµå",   17.9, "´í½º", "ÀÛ°î" ,  2, "ISFP",0},
-        {666666,"Liam Wilson",     "20061108" ,"³²", "liam@outlook.com",     "È£ÁÖ",     20.1, "´í½º", "ÀÛ°î ¹× ÀÛ»ç" ,3, "ENTJ",1},
+        {111111,"ë°•ì§€ì—°",          "20060415" ,"ì—¬", "jiyeon@outlook.com",    "í•œêµ­",     18.5, "ëŒ„ìŠ¤", "ì‘ê³¡" ,  0, "ENFJ",1},
+        {222222,"Ethan Smith",     "20050822" ,"ë‚¨", "ethan@outlook.com",    "ë¯¸êµ­",     21.2, "ë³´ì»¬", "ì‘ì‚¬" ,  2, "ISTP",1},
+        {333333,"Suphanan Wong",   "20040105" ,"ì—¬", "suphanan@outlook.com", "íƒœêµ­" ,    19.0, "ëŒ„ìŠ¤", "ì‘ì‚¬" ,  4, "INFJ",0},
+        {444444,"Helena Silva",    "20070310" ,"ì—¬", "helena@outlook.com",   "ë¸Œë¼ì§ˆ",   20.8, "ë³´ì»¬", "ì‘ê³¡ ë° ì‘ì‚¬" ,1, "ENFP",1},
+        {555555,"Karolina Nowak",  "20060908" ,"ì—¬", "karolina@outlook.com", "í´ë€ë“œ",   17.9, "ëŒ„ìŠ¤", "ì‘ê³¡" ,  2, "ISFP",0},
+        {666666,"Liam Wilson",     "20061108" ,"ë‚¨", "liam@outlook.com",     "í˜¸ì£¼",     20.1, "ëŒ„ìŠ¤", "ì‘ê³¡ ë° ì‘ì‚¬" ,3, "ENTJ",1},
     };
     struct last_sheet milliways_arr[4]={0};
 
@@ -69,11 +69,12 @@ int main(){
     char num_check[32]={0};
     int Checking=0;
     
-    copy(candidate_arr,milliways_arr);
+        copy(candidate_arr,milliways_arr);
+        
 
 
 
-for(int x=0; x<1; x++){
+for(int x=0; x<4; x++){
         interview(milliways_arr,x);
         plus_weight(milliways_arr,x);
     }
@@ -90,25 +91,25 @@ for(int x=0; x<4; x++){
 
 
 void interview(struct last_sheet milliways[],int i){
-        printf("ÀÌ¸§: ");
+        printf("ì´ë¦„: ");
         scanf("%s", &milliways[i].name);
 
-        printf("´Ğ³×ÀÓ: ");
+        printf("ë‹‰ë„¤ì„: ");
         scanf("%s", &milliways[i].aka);        
 
-        printf("ÇĞ·Â: ");
+        printf("í•™ë ¥: ");
         scanf("%s", &milliways[i].ability);
 
-        printf("Å°: ");
+        printf("í‚¤: ");
         scanf("%f", &milliways[i].cm);
 
-        printf("Ç÷¾×Çü: ");
+        printf("í˜ˆì•¡í˜•: ");
         scanf("%s", &milliways[i].b_type);
 
-        printf("¾Ë·¯Áö: ");
+        printf("ì•ŒëŸ¬ì§€: ");
         scanf("%s", &milliways[i].allergy);
 
-        printf("Ãë¹Ì: ");
+        printf("ì·¨ë¯¸: ");
         scanf("%s", &milliways[i].hobby);
 
         printf("SNS: ");
@@ -118,17 +119,6 @@ void interview(struct last_sheet milliways[],int i){
         else
             printf("====================================\n");
 
-        printf("%s\n", milliways[i].name);
-        printf("%s\n", milliways[i].aka);        
-        printf("%s\n", milliways[i].ability);
-        printf("%.2f\n", milliways[i].cm);
-        printf("%s\n", milliways[i].b_type);
-        printf("%s\n", milliways[i].allergy);
-        printf("%s\n", milliways[i].hobby);
-        printf("%s\n", milliways[i].sns);
-
-           printf("====================================\n");
-
 } 
 
 void copy(struct info_sheet candidates[],struct last_sheet milliways[]){
@@ -136,8 +126,10 @@ void copy(struct info_sheet candidates[],struct last_sheet milliways[]){
     int p=0;
 
 	for(int i=0; i<4; i++){    
-    
-    if(candidates[i].result==1){
+   
+        while(candidates[x].result!=1){
+            x++;
+        }
 
     milliways[i].id =candidates[x].id;
 
@@ -179,7 +171,8 @@ void copy(struct info_sheet candidates[],struct last_sheet milliways[]){
         if (candidates[x].mbti[j] == '\0') break; 
     }
     
-        }
+    x++;
+        
     }
 }
 
@@ -192,16 +185,20 @@ void plus_weight(struct last_sheet milliways[],int i){
 void END(struct last_sheet milliways[],int i){
     milliways[i].mbti[4] = '\0';
     
-    
+    if(i==0){
     printf("####################################\n");
-    printf("\t¿Àµğ¼Ç ÇÕ°İÀÚ µ¥ÀÌÅÍ Á¶È¸\n ");
-    printf("####################################\n");
-    printf("\t¼º   ¸í      | »ı     ÀÏ|¼ºº°|          ¸Ş ÀÏ          |±¹  Àû| BMI |ÁÖ½ºÅ³|º¸Á¶ ½ºÅ³|\n");
+    printf("\tì˜¤ë””ì…˜ í•©ê²©ì ë°ì´í„° ì¡°íšŒ\n ");
+    printf("\n####################################\n");
+    }
+    else{
+        printf("\n====================================\n\n");
+    }
+    printf("\tì„±   ëª…      | ìƒ     ì¼|ì„±ë³„|          ë©” ì¼          |êµ­  ì | BMI |ì£¼ìŠ¤í‚¬|ë³´ì¡° ìŠ¤í‚¬|\n");
     printf("\t%-13s|%-10s|%-4s|\t%-23s|%-6s|%-5.1f|%-6s|%-8s|\n",milliways[i].name, milliways[i].birthday, milliways[i].sex, milliways[i].e_mail, milliways[i].country, milliways[i].bmi, milliways[i].skill, milliways[i].b_skill);
-    printf("TOPIK|MBTI|  ´Ğ³×ÀÓ  | Å° |¸ö¹«°Ô|Ç÷¾×Çü| ÇĞ·Â | ¾Ë·¯Áö |       Ãë¹Ì       |\t\tSNS\t\t|\n");
+    printf("TOPIK|MBTI|  ë‹‰ë„¤ì„  | í‚¤ |ëª¸ë¬´ê²Œ|í˜ˆì•¡í˜•| í•™ë ¥ | ì•ŒëŸ¬ì§€ |       ì·¨ë¯¸       |\t\tSNS\t\t|\n");
     
     printf("%-5d|%s|%-10s|%-4.0f|%-6.0f|%-6s|%-6s|%-8s|%- 18s|%-28s|\n",milliways[i].kor, milliways[i].mbti, milliways[i].aka, milliways[i].cm, milliways[i].weight, milliways[i].b_type,milliways[i].ability, milliways[i].allergy, milliways[i].hobby, milliways[i].sns);
 
-printf("");
-
+    
+    
 };
